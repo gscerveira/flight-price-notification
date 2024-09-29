@@ -5,7 +5,6 @@
 ### 1.1 Environment Setup
 - Create a new Python virtual environment
 - Install FastAPI, uvicorn, pydantic, and required async libraries
-- Set up a `.env` file for environment variables
 
 ### 1.2 Project Structure
 - Create `main.py` as the entry point
@@ -15,7 +14,6 @@
 ## 2. Configuration Management
 
 - Implement a Pydantic BaseSettings model for configuration
-- Use environment variables for sensitive information
 
 ## 3. API Development
 

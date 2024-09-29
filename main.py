@@ -1,13 +1,17 @@
+from config import settings
 from fastapi import FastAPI
-from pydantic import BaseSettings
+from routers import health, notifications
+from services.notification_queue import process_notifications
+import asyncio
 
 app = FastAPI()
 
-class Settings(BaseSettings):
-    app_name: str = "Fligh Price Notification Service"
-    debug: bool = False
-    
-settings = Settings()
+app.include_router(health.router)
+app.include_router(notifications.router)
+
+@app.on_event("startup")
+async def startup_event():
+    asyncio.create_task(process_notifications())
 
 @app.get("/")
 async def root():
@@ -15,4 +19,4 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000, debug=settings.debug)

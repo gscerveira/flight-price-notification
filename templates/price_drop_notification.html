@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Drop Alert</title>
+</head>
+<body>
+    <h1>Price Drop Alert for Flight {{ flight_number }}</h1>
+    <p>Good news! The price for your flight has dropped.</p>
+    <ul>
+        <li>Original Price: ${{ "%.2f"|format(original_price) }}</li>
+        <li>New Price: ${{ "%.2f"|format(new_price) }}</li>
+        <li>You Save: ${{ "%.2f"|format(savings) }}</li>
+    </ul>
+    <p>Book now to take advantage of this lower price!</p>
+</body>
+</html>
